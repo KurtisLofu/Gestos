@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/BtnMenuAddPalabra"
+        android:title="Añadir palabra" />
+    <item
+        android:id="@+id/BtnMenuGestionarPalabra"
+        android:title="Gestionar palabras" />
+    <item
+        android:id="@+id/BtnMenuConfig"
+        android:title="Configuración" />
+</menu>
