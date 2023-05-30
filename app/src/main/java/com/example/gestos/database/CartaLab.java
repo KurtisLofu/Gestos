@@ -18,6 +18,7 @@ public class CartaLab {
         Context appContext = context.getApplicationContext();
         CartaDatabase database = Room.databaseBuilder(appContext, CartaDatabase.class, "carta")
                 .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
                 .build();
 
         cartaDAO = database.getCartaDAO();
@@ -33,10 +34,15 @@ public class CartaLab {
     public List<Carta> getAllCartas() { return cartaDAO.getAll(); }
 
     public List<Carta> getCartasByDificultad(int dificultad) {return cartaDAO.getCartasByDificultad(dificultad);}
+    public List<Carta> getCartasByDificultad(int dificultad, int cantidad) {return cartaDAO.getCartasByDificultad(dificultad, cantidad);}
 
     public List<Carta> getCartasByPalabra(String palabra) {return cartaDAO.getCartasByPalabra(palabra);}
 
     public void insertAll(List<Carta> cartas) { cartaDAO.insertAll(cartas);}
+
+    public void setIsUsedTrueCartas(List<Carta> cartas) {cartaDAO.updateCartas(cartas);}
+
+    public void setIsUsedFalseAllCartas() {cartaDAO.updateAll();}
 
     public void delete(Carta carta) {cartaDAO.delete(carta);}
 }

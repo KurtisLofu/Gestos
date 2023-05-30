@@ -7,9 +7,19 @@ import androidx.annotation.NonNull;
 
 public class Equipo implements Parcelable {
 
+    public int id;
+
     public String nombre;
     public int puntos;
     public boolean isTurno;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public boolean isTurno() {
         return isTurno;
@@ -57,6 +67,7 @@ public class Equipo implements Parcelable {
         parcel.writeString(nombre);
         parcel.writeInt(puntos);
         parcel.writeByte((byte) (isTurno ? 1 : 0));
+        parcel.writeInt(id);
     }
 
 
@@ -77,5 +88,11 @@ public class Equipo implements Parcelable {
         nombre = in.readString();
         puntos = in.readInt();
         isTurno = in.readByte() != 0;
+        id = in.readInt();
+    }
+
+    @Override
+    public String toString() {
+        return nombre ;
     }
 }
